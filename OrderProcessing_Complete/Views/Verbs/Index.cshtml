@@ -4,42 +4,51 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Customer Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderDate)
+        <th>            
+            Order Date
+            @*@Html.DisplayNameFor(model => model.OrderDate)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CustomerName)
+            Customer Name
+            @*@Html.DisplayNameFor(model => model.CustomerName)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CustomerAddress)
+            Customer Address
+           @* @Html.DisplayNameFor(model => model.CustomerAddress)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CustomerPhone)
+            Customer Phone
+           @* @Html.DisplayNameFor(model => model.CustomerPhone)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TShirtColor)
+            TShirt Color
+           @* @Html.DisplayNameFor(model => model.TShirtColor)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TShirtSize)
+            TShirt Size
+           @* @Html.DisplayNameFor(model => model.TShirtSize)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TShirtPrice)
+            TShirt Price
+           @* @Html.DisplayNameFor(model => model.TShirtPrice)*@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Quantity)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OrderTotal)
+            Order Total
+           @* @Html.DisplayNameFor(model => model.OrderTotal)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OrderStatusID)
+            Order Status
+           @* @Html.DisplayNameFor(model => model.OrderStatusID)*@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Notes)
