@@ -39,7 +39,7 @@ namespace OrderProcessing_Complete.Models
         public int OrderTotal { get; set; }
 
         [DisplayName("Order Status")]
-        public int OrderStatusID { get; set; }
+        public string OrderStatusID { get; set; }
 
         public string Notes { get; set; }
 

@@ -16,10 +16,10 @@
           <Property Name="CustomerPhone" Type="nvarchar" MaxLength="15" />
           <Property Name="TShirtColor" Type="nvarchar" MaxLength="15" />
           <Property Name="TShirtSize" Type="nvarchar" MaxLength="10" />
-          <Property Name="TShirtPrice" Type="smallmoney" />
+          <Property Name="TShirtPrice" Type="int" />
           <Property Name="Quantity" Type="int" />
           <Property Name="OrderTotal" Type="int" />
-          <Property Name="OrderStatusID" Type="int" Nullable="false" />
+          <Property Name="OrderStatusID" Type="nvarchar" MaxLength="50" />
           <Property Name="Notes" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="OrderStatusID">
@@ -37,10 +37,10 @@
           <Parameter Name="CustomerPhone" Type="nvarchar" Mode="In" />
           <Parameter Name="TShirtColor" Type="nvarchar" Mode="In" />
           <Parameter Name="TShirtSize" Type="nvarchar" Mode="In" />
-          <Parameter Name="TShirtPrice" Type="smallmoney" Mode="In" />
+          <Parameter Name="TShirtPrice" Type="int" Mode="In" />
           <Parameter Name="Quantity" Type="int" Mode="In" />
           <Parameter Name="OrderTotal" Type="int" Mode="In" />
-          <Parameter Name="OrderStatusID" Type="int" Mode="In" />
+          <Parameter Name="OrderStatusID" Type="nvarchar" Mode="In" />
           <Parameter Name="Notes" Type="nvarchar" Mode="In" />
           <Parameter Name="Option" Type="nvarchar" Mode="In" />
         </Function>
@@ -64,10 +64,10 @@
           <Property Name="CustomerPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="TShirtColor" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="TShirtSize" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="TShirtPrice" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="TShirtPrice" Type="Int32" />
           <Property Name="Quantity" Type="Int32" />
           <Property Name="OrderTotal" Type="Int32" />
-          <Property Name="OrderStatusID" Type="Int32" Nullable="false" />
+          <Property Name="OrderStatusID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="OrderStatusID">
@@ -88,10 +88,10 @@
             <Parameter Name="CustomerPhone" Mode="In" Type="String" />
             <Parameter Name="TShirtColor" Mode="In" Type="String" />
             <Parameter Name="TShirtSize" Mode="In" Type="String" />
-            <Parameter Name="TShirtPrice" Mode="In" Type="Decimal" />
+            <Parameter Name="TShirtPrice" Mode="In" Type="Int32" />
             <Parameter Name="Quantity" Mode="In" Type="Int32" />
             <Parameter Name="OrderTotal" Mode="In" Type="Int32" />
-            <Parameter Name="OrderStatusID" Mode="In" Type="Int32" />
+            <Parameter Name="OrderStatusID" Mode="In" Type="String" />
             <Parameter Name="Notes" Mode="In" Type="String" />
             <Parameter Name="Option" Mode="In" Type="String" />
           </FunctionImport>
@@ -104,10 +104,10 @@
           <Property Type="String" Name="CustomerPhone" Nullable="true" MaxLength="15" />
           <Property Type="String" Name="TShirtColor" Nullable="true" MaxLength="15" />
           <Property Type="String" Name="TShirtSize" Nullable="true" MaxLength="10" />
-          <Property Type="Decimal" Name="TShirtPrice" Nullable="true" Precision="10" />
+          <Property Type="Int32" Name="TShirtPrice" Nullable="true"/>
           <Property Type="Int32" Name="Quantity" Nullable="true" />
           <Property Type="Int32" Name="OrderTotal" Nullable="true" />
-          <Property Type="Int32" Name="OrderStatusID" Nullable="false" />
+          <Property Type="String" Name="OrderStatusID" Nullable="true" MaxLength="50"/>
           <Property Type="String" Name="Notes" Nullable="true" MaxLength="200" />
         </ComplexType>
       </Schema>

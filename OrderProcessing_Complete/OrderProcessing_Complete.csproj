@@ -170,6 +170,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\orderClass.cs" />
+    <Compile Include="Models\statusEnums.cs" />
     <Compile Include="OrderDetail.cs">
       <DependentUpon>OrderModel.tt</DependentUpon>
     </Compile>

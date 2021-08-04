@@ -30,7 +30,7 @@ namespace OrderProcessing_Complete
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<OrderStatusID> OrderStatusIDs { get; set; }
     
-        public virtual ObjectResult<sp_OrderDetailsUpdate_Result> sp_OrderDetailsUpdate(Nullable<int> orderID, Nullable<System.DateTime> orderDate, string customerName, string customerAddress, string customerPhone, string tShirtColor, string tShirtSize, Nullable<decimal> tShirtPrice, Nullable<int> quantity, Nullable<int> orderTotal, Nullable<int> orderStatusID, string notes, string option)
+        public virtual ObjectResult<sp_OrderDetailsUpdate_Result> sp_OrderDetailsUpdate(Nullable<int> orderID, Nullable<System.DateTime> orderDate, string customerName, string customerAddress, string customerPhone, string tShirtColor, string tShirtSize, Nullable<decimal> tShirtPrice, Nullable<int> quantity, Nullable<int> orderTotal, string orderStatusID, string notes, string option)
         {
             var orderIDParameter = orderID.HasValue ?
                 new ObjectParameter("OrderID", orderID) :
@@ -62,7 +62,7 @@ namespace OrderProcessing_Complete
     
             var tShirtPriceParameter = tShirtPrice.HasValue ?
                 new ObjectParameter("TShirtPrice", tShirtPrice) :
-                new ObjectParameter("TShirtPrice", typeof(decimal));
+                new ObjectParameter("TShirtPrice", typeof(int));
     
             var quantityParameter = quantity.HasValue ?
                 new ObjectParameter("Quantity", quantity) :
@@ -72,9 +72,9 @@ namespace OrderProcessing_Complete
                 new ObjectParameter("OrderTotal", orderTotal) :
                 new ObjectParameter("OrderTotal", typeof(int));
     
-            var orderStatusIDParameter = orderStatusID.HasValue ?
+            var orderStatusIDParameter = orderStatusID != null ?
                 new ObjectParameter("OrderStatusID", orderStatusID) :
-                new ObjectParameter("OrderStatusID", typeof(int));
+                new ObjectParameter("OrderStatusID", typeof(string));
     
             var notesParameter = notes != null ?
                 new ObjectParameter("Notes", notes) :

@@ -20,10 +20,10 @@ namespace OrderProcessing_Complete
         public string CustomerPhone { get; set; }
         public string TShirtColor { get; set; }
         public string TShirtSize { get; set; }
-        public Nullable<decimal> TShirtPrice { get; set; }
+        public Nullable<int> TShirtPrice { get; set; }
         public Nullable<int> Quantity { get; set; }
         public Nullable<int> OrderTotal { get; set; }
-        public int OrderStatusID { get; set; }
+        public string OrderStatusID { get; set; }
         public string Notes { get; set; }
     }
 }

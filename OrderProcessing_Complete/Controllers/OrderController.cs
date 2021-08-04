@@ -19,7 +19,7 @@ namespace OrderProcessing_Complete.Controllers
 
         public IHttpActionResult GetOrderDetails()
         {
-            var results = dbConnect.sp_OrderDetailsUpdate(0, null, "", "", "", "", "", 0, 0, 0, 0, "", "Get").ToList();
+            var results = dbConnect.sp_OrderDetailsUpdate(0, null, "", "", "", "", "", 0, 0, 0, "", "", "Get").ToList();
             return Ok(results);
 
         }
@@ -31,7 +31,7 @@ namespace OrderProcessing_Complete.Controllers
 
         public IHttpActionResult getOrderID(int id)
         {
-            var orderDetails = dbConnect.sp_OrderDetailsUpdate(id, null, "", "", "", "", "", 0, 0, 0, 0, "", "GetOrderID").Select(x => new orderClass()
+            var orderDetails = dbConnect.sp_OrderDetailsUpdate(id, null, "", "", "", "", "", 0, 0, 0, "", "", "GetOrderID").Select(x => new orderClass()
             {
                 OrderID = x.OrderID,
                 OrderDate = x.OrderDate.ToString(),
@@ -58,7 +58,7 @@ namespace OrderProcessing_Complete.Controllers
 
         public IHttpActionResult Delete(int id)
         {
-            var deleteRecord = dbConnect.sp_OrderDetailsUpdate(id, null, "", "", "", "", "", 0, 0, 0, 0, "", "Delete").Select(x => new orderClass()
+            var deleteRecord = dbConnect.sp_OrderDetailsUpdate(id, null, "", "", "", "", "", 0, 0, 0, "", "", "Delete").Select(x => new orderClass()
             {
                 OrderID = x.OrderID,
                 OrderDate = x.OrderDate.ToString(),
