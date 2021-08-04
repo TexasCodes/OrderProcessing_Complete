@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="odModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderDate" Type="date" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerPhone" Type="nvarchar" MaxLength="15" />
+          <Property Name="TShirtColor" Type="nvarchar" MaxLength="15" />
+          <Property Name="TShirtSize" Type="nvarchar" MaxLength="10" />
+          <Property Name="TShirtPrice" Type="smallmoney" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="OrderTotal" Type="int" />
+          <Property Name="OrderStatusID" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="OrderStatusID">
+          <Key>
+            <PropertyRef Name="OrderStatusID" />
+          </Key>
+          <Property Name="OrderStatusID" Type="int" Nullable="false" />
+          <Property Name="OrderStatus" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <Function Name="sp_OrderDetailsUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="OrderDate" Type="date" Mode="In" />
+          <Parameter Name="CustomerName" Type="nvarchar" Mode="In" />
+          <Parameter Name="CustomerAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="CustomerPhone" Type="nvarchar" Mode="In" />
+          <Parameter Name="TShirtColor" Type="nvarchar" Mode="In" />
+          <Parameter Name="TShirtSize" Type="nvarchar" Mode="In" />
+          <Parameter Name="TShirtPrice" Type="smallmoney" Mode="In" />
+          <Parameter Name="Quantity" Type="int" Mode="In" />
+          <Parameter Name="OrderTotal" Type="int" Mode="In" />
+          <Parameter Name="OrderStatusID" Type="int" Mode="In" />
+          <Parameter Name="Notes" Type="nvarchar" Mode="In" />
+          <Parameter Name="Option" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="odModelStoreContainer">
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderStatusID" EntityType="Self.OrderStatusID" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="odModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="DateTime" Precision="0" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="TShirtColor" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="TShirtSize" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TShirtPrice" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="OrderTotal" Type="Int32" />
+          <Property Name="OrderStatusID" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OrderStatusID">
+          <Key>
+            <PropertyRef Name="OrderStatusID1" />
+          </Key>
+          <Property Name="OrderStatusID1" Type="Int32" Nullable="false" />
+          <Property Name="OrderStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="orderEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="OrderStatusIDs" EntityType="Self.OrderStatusID" />
+          <FunctionImport Name="sp_OrderDetailsUpdate" ReturnType="Collection(odModel.sp_OrderDetailsUpdate_Result)">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+            <Parameter Name="OrderDate" Mode="In" Type="DateTime" />
+            <Parameter Name="CustomerName" Mode="In" Type="String" />
+            <Parameter Name="CustomerAddress" Mode="In" Type="String" />
+            <Parameter Name="CustomerPhone" Mode="In" Type="String" />
+            <Parameter Name="TShirtColor" Mode="In" Type="String" />
+            <Parameter Name="TShirtSize" Mode="In" Type="String" />
+            <Parameter Name="TShirtPrice" Mode="In" Type="Decimal" />
+            <Parameter Name="Quantity" Mode="In" Type="Int32" />
+            <Parameter Name="OrderTotal" Mode="In" Type="Int32" />
+            <Parameter Name="OrderStatusID" Mode="In" Type="Int32" />
+            <Parameter Name="Notes" Mode="In" Type="String" />
+            <Parameter Name="Option" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_OrderDetailsUpdate_Result">
+          <Property Type="Int32" Name="OrderID" Nullable="false" />
+          <Property Type="DateTime" Name="OrderDate" Nullable="true" />
+          <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CustomerAddress" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CustomerPhone" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="TShirtColor" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="TShirtSize" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="TShirtPrice" Nullable="true" Precision="10" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+          <Property Type="Int32" Name="OrderTotal" Nullable="true" />
+          <Property Type="Int32" Name="OrderStatusID" Nullable="false" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="200" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="odModelStoreContainer" CdmEntityContainer="orderEntities">
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="odModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+                <ScalarProperty Name="TShirtColor" ColumnName="TShirtColor" />
+                <ScalarProperty Name="TShirtSize" ColumnName="TShirtSize" />
+                <ScalarProperty Name="TShirtPrice" ColumnName="TShirtPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="OrderTotal" ColumnName="OrderTotal" />
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderStatusIDs">
+            <EntityTypeMapping TypeName="odModel.OrderStatusID">
+              <MappingFragment StoreEntitySet="OrderStatusID">
+                <ScalarProperty Name="OrderStatusID1" ColumnName="OrderStatusID" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_OrderDetailsUpdate" FunctionName="odModel.Store.sp_OrderDetailsUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="odModel.sp_OrderDetailsUpdate_Result">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+                <ScalarProperty Name="TShirtColor" ColumnName="TShirtColor" />
+                <ScalarProperty Name="TShirtSize" ColumnName="TShirtSize" />
+                <ScalarProperty Name="TShirtPrice" ColumnName="TShirtPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="OrderTotal" ColumnName="OrderTotal" />
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

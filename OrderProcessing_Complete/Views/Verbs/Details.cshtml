@@ -1,0 +1,114 @@
+﻿@model OrderProcessing_Complete.Models.orderClass
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>orderClass</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TShirtColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TShirtColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TShirtSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TShirtSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TShirtPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TShirtPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderStatusID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderStatusID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
